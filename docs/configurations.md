@@ -81,3 +81,60 @@ chezmoi テンプレートにより OS ごとに内容が分岐する。
 | ツール | バージョン |
 |--------|-----------|
 | Ruby | 3（最新の 3.x） |
+
+## ~/.claude/（Claude Code）
+
+[Claude Code](https://claude.ai/code) の設定ファイル群。認証情報・セッションデータ・キャッシュは除外し、ユーザー定義の設定のみ管理する。
+
+### CLAUDE.md
+
+グローバルな指示ファイル。全プロジェクトで Claude に適用される指示を記述する。現在は日本語での応答を指示。
+
+### settings.json（テンプレート）
+
+Claude Code の動作設定。`statusLine.command` に含まれるホームディレクトリパスを chezmoi テンプレートで動的解決する。
+
+| 設定 | 値 |
+|------|-----|
+| `hooks.Notification` | Windows の通知音（`powershell.exe` 経由）を再生 |
+| `hooks.Stop` | Windows の通知音（`powershell.exe` 経由）を再生 |
+| `statusLine` | カスタムスクリプト `statusline-braille.py` を実行 |
+| `mcpServers.codex` | `codex mcp-server` を MCP サーバーとして登録 |
+| `enabledPlugins` | `typescript-lsp` プラグインを有効化 |
+| `model` | デフォルトモデル（`opusplan`） |
+
+### keybindings.json
+
+カスタムキーバインド設定。`Shift+Enter` でチャット中に改行を挿入する。
+
+### hooks/notify.sh
+
+フックイベント発生時に呼び出されるスクリプト。`powershell.exe` を通じて Windows システム通知音を再生する（WSL 専用）。Linux / WSL 以外の環境では chezmoi によりデプロイされない。
+
+### statusline-braille.py / statusline-command.sh
+
+Claude Code のステータスライン表示をカスタマイズするスクリプト。ブライユ記号を使ったプログレスバーを表示する。
+
+## ~/.codex/（OpenAI Codex）
+
+[OpenAI Codex](https://github.com/openai/codex) の設定ファイル群。認証情報・セッションデータ・キャッシュは除外し、ユーザー定義の設定のみ管理する。
+
+### AGENTS.md
+
+グローバルなエージェント指示ファイル。`~/.claude/CLAUDE.md` と同様に、全プロジェクトで適用される指示を記述する。
+
+### config.toml（テンプレート）
+
+Codex の動作設定。
+
+| 設定 | 値 |
+|------|-----|
+| `model` | `gpt-5.4` |
+| `model_reasoning_effort` | `high` |
+| `personality` | `pragmatic` |
+| `approvals_reviewer` | `user`（コマンド実行前にユーザー確認） |
+| `features.multi_agent` | マルチエージェント機能を有効化 |
+
+### rules/default.rules
+
+コマンド自動承認ルールのカスタム DSL。`npm run typecheck`、`git add/commit`、`pnpm dev/test` などの安全なコマンドを事前承認する。

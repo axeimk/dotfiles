@@ -1,0 +1,51 @@
+{
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe -c \"(New-Object System.Media.SoundPlayer 'C:\\Windows\\Media\\Windows Exclamation.wav').PlaySync()\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe -c \"(New-Object System.Media.SoundPlayer 'C:\\Windows\\Media\\Windows Notify.wav').PlaySync()\""
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "python3 {{ .chezmoi.homeDir }}/.claude/statusline-braille.py"
+  },
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "imk-forge": {
+      "source": {
+        "source": "github",
+        "repo": "axeimk/imk-forge"
+      }
+    }
+  },
+  "voiceEnabled": false,
+  "mcpServers": {
+    "codex": {
+      "command": "codex",
+      "args": [
+        "mcp-server"
+      ]
+    }
+  },
+  "model": "opusplan"
+}

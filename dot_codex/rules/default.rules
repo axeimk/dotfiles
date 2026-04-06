@@ -1,0 +1,6 @@
+prefix_rule(pattern=["npm", "run", "typecheck"], decision="allow")
+prefix_rule(pattern=["pnpm", "dev"], decision="allow")
+prefix_rule(pattern=["pnpm", "test"], decision="allow")
+prefix_rule(pattern=["tsc", "-b"], decision="allow")
+prefix_rule(pattern=["git", "add"], decision="allow")
+prefix_rule(pattern=["git", "commit"], decision="allow")

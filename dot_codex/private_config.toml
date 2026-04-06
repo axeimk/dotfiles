@@ -1,0 +1,14 @@
+model = "gpt-5.4"
+model_reasoning_effort = "high"
+personality = "pragmatic"
+plan_mode_reasoning_effort = "high"
+approvals_reviewer = "user"
+
+[tui]
+status_line = [ "model-with-reasoning", "context-remaining", "project-root", "git-branch", "five-hour-limit", "weekly-limit", "context-window-size" ]
+
+[features]
+multi_agent = true
+
+[plugins."github@openai-curated"]
+enabled = true

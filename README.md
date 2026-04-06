@@ -12,6 +12,15 @@
 | `~/.config/git/ignore` | 共通 |
 | `~/.config/starship.toml` | 共通 |
 | `~/.config/mise/config.toml` | 共通 |
+| `~/.claude/CLAUDE.md` | 共通 |
+| `~/.claude/settings.json` | 共通（テンプレートで homeDir を動的解決） |
+| `~/.claude/keybindings.json` | 共通 |
+| `~/.claude/hooks/notify.sh` | Linux / WSL のみ |
+| `~/.claude/statusline-braille.py` | 共通 |
+| `~/.claude/statusline-command.sh` | 共通 |
+| `~/.codex/AGENTS.md` | 共通 |
+| `~/.codex/config.toml` | 共通 |
+| `~/.codex/rules/default.rules` | 共通 |
 
 各ファイルの詳細は [docs/configurations.md](docs/configurations.md) を参照。
 
