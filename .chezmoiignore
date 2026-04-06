@@ -1,0 +1,9 @@
+README.md
+.gitignore
+docs/
+.vscode/
+
+{{ if ne .chezmoi.os "linux" }}
+dot_bashrc
+dot_profile
+{{ end }}

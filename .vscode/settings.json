@@ -1,0 +1,10 @@
+{
+  "files.associations": {
+    "dot_bashrc": "shellscript",
+    "dot_profile": "shellscript",
+    "dot_gitconfig.tmpl": "properties",
+    "dot_config/git/*_ignore": "ignore",
+    "dot_config/starship.toml": "toml",
+    "dot_config/mise/config.toml": "toml"
+  }
+}

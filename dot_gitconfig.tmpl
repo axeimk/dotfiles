@@ -1,0 +1,37 @@
+[core]
+	editor = code --wait
+	ignorecase = false
+	quotepath = false
+	excludesFile = {{ .chezmoi.homeDir }}/.config/git/ignore
+{{ if eq .chezmoi.os "windows" }}	autocrlf = true
+{{ end }}
+[user]
+	name = axeimk
+	email = axeimk@users.noreply.github.com
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[init]
+	defaultBranch = main
+[alias]
+	st = status
+[color]
+	ui = auto
+[credential "https://github.com"]
+	helper =
+{{ if eq .chezmoi.os "windows" }}	helper = !'C:\Program Files\GitHub CLI\gh.exe' auth git-credential
+{{ else if eq .chezmoi.os "darwin" }}	helper = !/opt/homebrew/bin/gh auth git-credential
+{{ else }}	helper = !/usr/bin/gh auth git-credential
+{{ end }}
+[credential "https://gist.github.com"]
+	helper =
+{{ if eq .chezmoi.os "windows" }}	helper = !'C:\Program Files\GitHub CLI\gh.exe' auth git-credential
+{{ else if eq .chezmoi.os "darwin" }}	helper = !/opt/homebrew/bin/gh auth git-credential
+{{ else }}	helper = !/usr/bin/gh auth git-credential
+{{ end }}
+{{ if ne .chezmoi.os "windows" }}
+[url "https://github.com/"]
+	insteadOf = git@github.com:
+{{ end }}
