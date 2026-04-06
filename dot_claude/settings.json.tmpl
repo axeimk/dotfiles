@@ -1,4 +1,5 @@
 {
+  {{ if eq .chezmoi.os "linux" -}}
   "hooks": {
     "Notification": [
       {
@@ -23,6 +24,7 @@
       }
     ]
   },
+  {{ end -}}
   "statusLine": {
     "type": "command",
     "command": "python3 {{ .chezmoi.homeDir }}/.claude/statusline-braille.py"
